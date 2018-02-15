@@ -3,8 +3,8 @@
     <v-flex>
       <div class="admin-page">
         <section class="new-post">
-          <AppButton @click="$router.push('/admin/new-post')">Create Post</AppButton>
-          <AppButton style="margin-left: 10px" @click="onLogout">Logout</AppButton>
+          <v-btn color="secondary" nuxt @click="$router.push('/admin/new-post')">Create Post</v-btn>
+          <v-btn id="logout-btn" nuxt outline @click="onLogout">Logout</v-btn>
         </section>
         <section class="existing-posts">
           <h1>Existing Posts</h1>
@@ -36,17 +36,19 @@ export default {
 </script>
 
 <style scoped>
-/* .admin-page {
-  padding: 20px;
-}
+  .admin-page {
+    text-align: center;
+  }
 
-.new-post {
-  text-align: center;
-  border-bottom: 2px solid #ccc;
-  padding-bottom: 10px;
-}
+  @media (min-width: 650px) {
+    .new-post {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+    }
+  }
 
-.existing-posts h1 {
-  text-align: center;
-} */
+  #logout-btn {
+    font-size: .9em !important;
+  }
 </style>

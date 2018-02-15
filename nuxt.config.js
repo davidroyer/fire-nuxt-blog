@@ -53,7 +53,8 @@ module.exports = {
   plugins: [
     "~plugins/core-components.js",
     "~plugins/date-filter.js",
-    '~/plugins/vuetify.js'
+    '~/plugins/vuetify.js',
+    { src: '~/plugins/vue2-editor.js', ssr: false }
   ],
 
   /*

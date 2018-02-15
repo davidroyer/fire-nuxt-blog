@@ -4,28 +4,22 @@
       <AppControlInput v-model="editedPost.author">Author Name</AppControlInput>
       <AppControlInput v-model="editedPost.title">Title</AppControlInput>
       <AppControlInput v-model="editedPost.thumbnail">Thumbnail Link</AppControlInput>
-      <AppControlInput
-        control-type="textarea"
-        v-model="editedPost.content">Content</AppControlInput>
+
+    <no-ssr>
       <vue-editor v-model="editedPost.content"></vue-editor>
+    </no-ssr>
+      <div class="editedPost-buttons">
+        <v-btn color="secondary" @click="onSave">Save</v-btn>
+         <v-btn color="error" @click="onCancel">Cancel</v-btn>
+      </div>
     </div>
     <div class="editedPost-preview">
       <div v-html="editedPost.content"></div>
-    </div>
-
-    <div class="editedPost-buttons">
-      <AppButton type="submit">Save</AppButton>
-      <AppButton
-        type="button"
-        style="margin-left: 10px"
-        btn-style="cancel"
-        @click="onCancel">Cancel</AppButton>
     </div>
   </form>
 </template>
 
 <script>
-import {VueEditor, Quill } from 'vue2-editor'
 
 export default {
   props: {
@@ -33,9 +27,6 @@ export default {
       type: Object,
       required: false
     }
-  },
-  components: {
-    VueEditor
   },
 
   data() {
@@ -66,7 +57,6 @@ export default {
 
 <style scoped>
  #admin-post-form {
-   display: flex;
    flex-flow: row wrap;
    justify-content: space-between;
    max-width: 1400px;
@@ -74,18 +64,17 @@ export default {
    margin-right: auto;
  }
 
- #admin-post-form .editedPost-wrapper {
-   /* display: flex;
-   flex-flow: row wrap; */
+ @media (min-width: 800px) {
+   #admin-post-form {
+     display: flex;
+   }
  }
 
- #admin-post-form .editedPost-preview {
-   /* display: flex;
-   flex-flow: row wrap; */
- }
 
- #admin-post-form .editedPost-buttons {
+.editedPost-buttons {
   flex-basis: 100%;
+  text-align: right;
+  margin-top: 2.5em;
  }
 
  .editedPost-wrapper {
