@@ -24,6 +24,11 @@ module.exports = {
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css?family=Open+Sans"
+      },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' },
+      {
+        rel: "stylesheet",
+        href: "https://unpkg.com/vuetify/dist/vuetify.min.css"
       }
     ]
   },
@@ -40,12 +45,16 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: ["~assets/styles/main.css"],
-
+  css: ["~assets/styles/main.css", "~/assets/styles/app.styl"],
+// ~/assets/style/app.styl
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: ["~plugins/core-components.js", "~plugins/date-filter.js"],
+  plugins: [
+    "~plugins/core-components.js",
+    "~plugins/date-filter.js",
+    '~/plugins/vuetify.js'
+  ],
 
   /*
   ** Nuxt.js modules

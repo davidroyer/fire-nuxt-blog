@@ -1,10 +1,11 @@
 <template>
-  <div class="home-page">
-    <section class="intro">
-      <h1>Get the latest tech news!</h1>
-    </section>
-    <PostList :posts="loadedPosts" />
-  </div>
+  <v-layout justify-center align-center>
+    <v-flex>
+      <div class="home-page">
+        <PostList :posts="loadedPosts" />
+      </div>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -57,7 +58,7 @@ export default {
 
 .featured-posts {
   display: flex;
-  padding: 20px;
+  /* padding: 20px; */
   box-sizing: border-box;
   flex-wrap: wrap;
   align-items: center;

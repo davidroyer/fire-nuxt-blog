@@ -1,9 +1,13 @@
 <template>
-  <div class="admin-new-post-page">
-    <section class="new-post-form">
-      <AdminPostForm @submit="onSubmitted" />
-    </section>
-  </div>
+  <v-layout justify-center align-center>
+    <v-flex>
+      <div class="admin-new-post-page">
+        <section class="new-post-form">
+          <AdminPostForm @submit="onSubmitted" />
+        </section>
+      </div>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -11,7 +15,7 @@ import axios from "axios";
 import AdminPostForm from "@/components/Admin/AdminPostForm";
 
 export default {
-  layout: "admin",
+  // layout: "admin",
   middleware: ['check-auth', 'auth'],
   components: {
     AdminPostForm
@@ -27,7 +31,7 @@ export default {
 </script>
 
 <style scoped>
-.new-post-form {
+/* .new-post-form {
   width: 90%;
   margin: 20px auto;
 }
@@ -36,5 +40,5 @@ export default {
   .new-post-form {
     width: 500px;
   }
-}
+} */
 </style>

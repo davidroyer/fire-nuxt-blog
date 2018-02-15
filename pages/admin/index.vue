@@ -1,21 +1,25 @@
 <template>
-  <div class="admin-page">
-    <section class="new-post">
-      <AppButton @click="$router.push('/admin/new-post')">Create Post</AppButton>
-      <AppButton style="margin-left: 10px" @click="onLogout">Logout</AppButton>
-    </section>
-    <section class="existing-posts">
-      <h1>Existing Posts</h1>
-      <PostList
-        isAdmin
-        :posts="loadedPosts" />
-    </section>
-  </div>
+  <v-layout justify-center align-center>
+    <v-flex>
+      <div class="admin-page">
+        <section class="new-post">
+          <AppButton @click="$router.push('/admin/new-post')">Create Post</AppButton>
+          <AppButton style="margin-left: 10px" @click="onLogout">Logout</AppButton>
+        </section>
+        <section class="existing-posts">
+          <h1>Existing Posts</h1>
+          <PostList
+            isAdmin
+            :posts="loadedPosts" />
+        </section>
+      </div>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
+
 export default {
-  layout: "admin",
   middleware: ["check-auth", "auth"],
   computed: {
     loadedPosts() {
@@ -32,7 +36,7 @@ export default {
 </script>
 
 <style scoped>
-.admin-page {
+/* .admin-page {
   padding: 20px;
 }
 
@@ -44,5 +48,5 @@ export default {
 
 .existing-posts h1 {
   text-align: center;
-}
+} */
 </style>
