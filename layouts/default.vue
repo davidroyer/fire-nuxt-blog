@@ -45,7 +45,7 @@
         { icon: 'home', title: 'Home', to: '/' },
         { icon: 'info', title: 'About', to: '/about' },
         { icon: 'account_box', title: 'Admin', to: '/admin' },
-        { icon: 'bookmark', title: 'Nuxtify', to: '/nuxtifyp' }
+        { icon: 'bookmark', title: 'Fire Posts', to: '/fire' }
       ]
     }),
     props: {

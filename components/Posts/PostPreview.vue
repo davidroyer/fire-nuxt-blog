@@ -82,4 +82,8 @@ a:hover .post-content,
 a:active .post-content {
   background-color: #ccc;
 }
+
+.post-preview {
+  margin: 1em;
+}
 </style>

@@ -2,7 +2,38 @@
   <v-layout justify-center align-center>
     <v-flex>
       <div class="home-page">
-        <PostList :posts="loadedPosts" />
+        <!-- <pre>{{blogPosts}}</pre> -->
+        <!-- <template v-for="post in blogPosts">
+          <nuxt-link> </nuxt-link>
+        </template> -->
+        <!-- <PostList :posts="blogPosts" /> -->
+        <v-list>
+          <v-list-tile
+            router
+            v-for="(post, key) in blogPosts"
+            :to="`/fire/${post.slug}`"
+            :key="key"
+            exact
+          >
+            <v-list-tile-content>
+              <v-list-tile-title v-text="post.title"></v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+
+<!--
+        <v-list-item
+          v-for="(post, key) in blogPosts"
+          :key="key">
+          <v-list-tile
+            router
+            exact
+            :to="`/fire/${post.slug}`">
+            <v-list-tile-content>
+              <v-list-tile-title v-text="post.title"></v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list-item> -->
       </div>
     </v-flex>
   </v-layout>
@@ -11,7 +42,7 @@
 <script>
 export default {
   computed: {
-    loadedPosts() {
+    blogPosts() {
       return this.$store.getters.loadedPosts
     }
   }

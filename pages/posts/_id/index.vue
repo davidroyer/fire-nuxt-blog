@@ -1,6 +1,6 @@
 <template>
   <v-layout justify-center align-center>
-    <v-flex xs11>
+    <v-flex sm10>
       <div class="single-post-page">
 
         <section class="post">
@@ -11,15 +11,12 @@
           </div>
 
           <div class="post-image">
-            <img :src="loadedPost.thumbnail" :alt="'Post thumbnail for ' + loadedPost.title">
+            <img v-if="loadedPost.thumbnail" :src="loadedPost.thumbnail" :alt="'Post thumbnail for ' + loadedPost.title">
           </div>
 
           <div class="post-content" v-html="loadedPost.content"></div>
         </section>
 
-        <section class="post-feedback">
-          <p>Let me know what you think about the post, send a mail to <a href="mailto:feedback@my-awesome-domain.com">feedback@my-awesome-domain.com</a>.</p>
-        </section>
       </div>
     </v-flex>
   </v-layout>
@@ -49,11 +46,17 @@ export default {
 
 
 <style scoped>
+.post {
+  text-align: center;
+  max-width: 100%;
+}
+
 
 @media (min-width: 768px) {
   .post {
     width: 900px;
     margin: auto;
+    text-align: center;
   }
 }
 
