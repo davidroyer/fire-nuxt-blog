@@ -26,11 +26,11 @@
 <script>
 export default {
   async asyncData({app, params, payload}) {
-    if (payload) {
-      return {
-        post: payload.postData
-      }
-    }
+    // if (payload) {
+    //   return {
+    //     post: payload.postData
+    //   }
+    // }
 
     const data = await app.$axios.$get(`/posts.json?orderBy="slug"&equalTo="${params.slug}"&print=pretty`)
     const keys = Object.keys(data)

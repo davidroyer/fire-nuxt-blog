@@ -11,7 +11,7 @@
               v-if="post.thumbnail"
               :style="{backgroundImage: 'url(' + post.thumbnail + ')'}"></div>
             <div class="post-content">
-              <h1>{{ title }}</h1>
+              <h1 v-if="post.title">{{ post.title }}</h1>
               <p v-if="post.previewText">{{ post.previewText }}</p>
             </div>
           </article>

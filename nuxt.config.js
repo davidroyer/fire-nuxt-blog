@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const pkg = require("./package");
 const bodyParser = require("body-parser");
 const axios = require("axios");
@@ -89,18 +90,46 @@ module.exports = {
   serverMiddleware: [bodyParser.json(), "~/api"],
   generate: {
     routes: function() {
-      return axios
-        .get("https://fire-tests.firebaseio.com/posts.json")
-        .then(res => {
-          const routes = [];
-          for (const key in res.data) {
-            routes.push({
-              route: "/posts/" + key,
-              payload: {postData: res.data[key]}
-            });
-          }
-          return routes;
-        });
+      return axios.get('https://nuxtfire.firebaseio.com/posts.json')
+      .then((res) => {
+        return _.map(res.data, function(post, key) {
+          return `/fire/${post.slug}`
+        })
+
+      })
     }
+    // routes: function() {
+    //   return axios
+    //     .get('https://fire-tests.firebaseio.com/posts.json')
+    //     .then(res => {
+    //       const routes = [];
+    //       for (const slug in res.data) {
+    //         routes.push({
+    //           route: "/posts/" + slug,
+    //           payload: {postData: res.data[slug]}
+    //         });
+    //       }
+    //       return routes;
+    //     });
+    //   }
+    //     // return _.map(res.data, function(post, key) {
+    //     //   return `/fire/${post.slug}`
+    //     // })
+    //
+
+    // routes: function() {
+    //   return axios
+    //     .get("https://fire-tests.firebaseio.com/posts.json")
+    //     .then(res => {
+    //       const routes = [];
+    //       for (const key in res.data) {
+    //         routes.push({
+    //           route: "/posts/" + key,
+    //           payload: {postData: res.data[key]}
+    //         });
+    //       }
+    //       return routes;
+    //     });
+    // }
   }
 };
