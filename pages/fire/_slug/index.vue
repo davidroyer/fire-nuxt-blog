@@ -34,7 +34,6 @@ export default {
 
     const data = await app.$axios.$get(`/posts.json?orderBy="slug"&equalTo="${params.slug}"&print=pretty`)
     const keys = Object.keys(data)
-    // const key = keys[0]
     const post = data[keys[0]]
 
     return {

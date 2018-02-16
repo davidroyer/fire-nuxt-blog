@@ -36,7 +36,6 @@ const createStore = () => {
         return context.app.$axios
           .$get("/posts.json")
           .then(data => {
-            // console.log('DATA', data);
             const postsArray = [];
             for (const key in data) {
               postsArray.push({ ...data[key], id: key });

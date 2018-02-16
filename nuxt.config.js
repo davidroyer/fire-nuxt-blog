@@ -90,7 +90,7 @@ module.exports = {
   serverMiddleware: [bodyParser.json(), "~/api"],
   generate: {
     routes: function() {
-      return axios.get('https://nuxtfire.firebaseio.com/posts.json')
+      return axios.get('https://fire-tests.firebaseio.com/posts.json')
       .then((res) => {
         return _.map(res.data, function(post, key) {
           return `/fire/${post.slug}`
