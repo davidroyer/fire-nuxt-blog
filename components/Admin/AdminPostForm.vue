@@ -1,20 +1,26 @@
 <template>
 <form id="admin-post-form" @submit.prevent="onSave">
   <div class="editedPost-wrapper">
-    <!-- <AppControlInput v-model="editedPost.author">Author Name</AppControlInput> -->
-    <!-- <AppControlInput v-model="editedPost.title">Title</AppControlInput> -->
+
     <v-text-field name="title" label="Post Title" id="title" v-model="editedPost.title"></v-text-field>
     <v-text-field name="slug" label="Post Slug" id="slug" v-model="postSlug"></v-text-field>
     <v-text-field name="thumbnail" label="Post Thumbnail Link" id="thumbnail" v-model="editedPost.thumbnail"></v-text-field>
-    <!-- <v-text-field name="slug" label="Post Slug" id="slug" v-model="editedPost.slug"></v-text-field> -->
-    <!-- <AppControlInput v-model="editedPost.thumbnail">Thumbnail Link</AppControlInput> -->
+    <v-text-field
+      name="previewText"
+      id="previewText"
+      label="Post Preview Text"
+      multi-line
+      :rows="3"
+      v-model="editedPost.previewText">
+    </v-text-field>
 
+    <label id="post-content-label">Post Content</label>
     <no-ssr>
       <vue-editor v-model="editedPost.content"></vue-editor>
     </no-ssr>
     <div class="editedPost-buttons">
-      <v-btn color="secondary" @click="onSave">Save</v-btn>
       <v-btn color="error" @click="onCancel">Cancel</v-btn>
+      <v-btn color="secondary" @click="onSave">Save</v-btn>
     </div>
   </div>
   <div class="editedPost-preview">
@@ -24,8 +30,6 @@
 </template>
 
 <script>
-
-
 export default {
   props: {
     post: {
@@ -42,17 +46,6 @@ export default {
     postSlug() {
       return this.slugify(this.editedPost.title)
     }
-
-    // editedPost() {
-    //   let postFieldsObject = {
-    //     title: this.postTitle,
-    //     slug: this.postSlug,
-    //     thumbnail: "",
-    //     content: "",
-    //     previewText: ""
-    //   }
-    //   return this.post ? { ...this.post } : postFieldsObject
-    // }
   },
 
   data() {
@@ -122,5 +115,13 @@ export default {
   flex: 1 1 47%;
   box-sizing: border-box;
   padding: .5em 1.5em .5em 2.5em;
+}
+
+#post-content-label {
+  color: rgba(0, 0, 0, .54);
+  margin-bottom: 0.5em;
+  display: block;
+  margin-top: 1em;
+  font-size: 1.1em;
 }
 </style>
