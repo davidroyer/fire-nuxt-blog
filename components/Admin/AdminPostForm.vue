@@ -10,11 +10,32 @@
       id="previewText"
       label="Post Preview Text"
       multi-line
-      :rows="3"
+      :rows="2"
       v-model="editedPost.previewText">
     </v-text-field>
 
-    <label id="post-content-label">Post Content</label>
+    <v-select
+      label="Post Tags"
+      chips
+      tags
+      clearable
+      v-model="editedPost.tags"
+    >
+      <template slot="selection" slot-scope="data">
+
+        <v-chip
+          label
+          small
+          color="indigo"
+          text-color="white"
+          @input="remove(data.item)"
+          :selected="data.selected">
+          <v-icon color="white darken-2" left>label</v-icon>
+          {{ data.item }}
+        </v-chip>
+      </template>
+    </v-select>
+    <label class="label-styles">Post Content</label>
     <no-ssr>
       <vue-editor v-model="editedPost.content"></vue-editor>
     </no-ssr>
@@ -56,8 +77,10 @@ export default {
             title: "",
             slug: "",
             thumbnail: "",
-            content: "",
-            previewText: ""
+            tags: [],
+            previewText: "",
+            content: ""
+
           }
     };
   },
@@ -117,11 +140,19 @@ export default {
   padding: .5em 1.5em .5em 2.5em;
 }
 
-#post-content-label {
+.label-styles {
   color: rgba(0, 0, 0, .54);
   margin-bottom: 0.5em;
   display: block;
   margin-top: 1em;
   font-size: 1.1em;
+}
+.input-group {
+    margin-top: 1.5em;
+}
+
+.input-group--chips {
+  margin-bottom: 2.5em;
+  margin-top: .25em;
 }
 </style>
