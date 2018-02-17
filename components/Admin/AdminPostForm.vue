@@ -1,7 +1,7 @@
 <template>
 <form id="admin-post-form" @submit.prevent="onSave">
   <div class="editedPost-wrapper">
-
+    <label id="post-settings-label">Post Settings</label>
     <v-text-field name="title" label="Post Title" id="title" v-model="editedPost.title"></v-text-field>
     <v-text-field name="slug" label="Post Slug" id="slug" v-model="postSlug"></v-text-field>
     <v-text-field name="thumbnail" label="Post Thumbnail Link" id="thumbnail" v-model="editedPost.thumbnail"></v-text-field>
@@ -35,17 +35,19 @@
         </v-chip>
       </template>
     </v-select>
-    <label class="label-styles">Post Content</label>
-    <no-ssr>
-      <vue-editor v-model="editedPost.content"></vue-editor>
-    </no-ssr>
+
+
     <div class="editedPost-buttons">
       <v-btn color="error" @click="onCancel">Cancel</v-btn>
       <v-btn color="secondary" @click="onSave">Save</v-btn>
     </div>
   </div>
-  <div class="editedPost-preview">
-    <div v-html="editedPost.content"></div>
+
+  <div class="editedPost-preview post-content-editor">
+    <label id="post-content-label" class="display-1 label-styles">Post Content</label>
+    <no-ssr>
+      <mavon-editor v-on:change="handleChange" v-on:save="handleEditorSave" v-model="editedPost.markdown"></mavon-editor>
+    </no-ssr>
   </div>
 </form>
 </template>
@@ -79,12 +81,22 @@ export default {
             thumbnail: "",
             tags: [],
             previewText: "",
-            content: ""
+            content: "",
+            markdown: ""
 
-          }
+          },
+          editorMarkdown: '# Starting'
     };
   },
   methods: {
+    handleChange(value, render) {
+      this.editedPost.content = render
+    },
+
+    handleEditorSave(value, render) {
+      this.onSave()
+    },
+
     slugify(input) {
       let output = input.toLowerCase()
         .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
@@ -128,16 +140,19 @@ export default {
 }
 
 .editedPost-wrapper {
-  flex: 0 1 48%;
-  max-width: 650px;
-  border-right: 2px solid #80808061;
-  padding-right: 2em;
+  flex: 0 1 350px;
+  max-width: 350px;
+  border-right: 2px solid rgba(128, 128, 128, 0.38039);
+  padding-right: 2.75em;
+  padding-left: .5em;
+  margin: 2em auto;
 }
 
 .editedPost-preview {
-  flex: 1 1 47%;
-  box-sizing: border-box;
+  flex: 1 1 100%;
   padding: .5em 1.5em .5em 2.5em;
+  max-width: calc(100% - 350px);
+  margin: 2em auto;
 }
 
 .label-styles {
@@ -154,5 +169,21 @@ export default {
 .input-group--chips {
   margin-bottom: 2.5em;
   margin-top: .25em;
+}
+.markdown-body {
+  height: 100%;
+  z-index: 1;
+}
+#post-content-label, #post-settings-label {
+  margin-top: -.5em;
+  margin-bottom: 1.5em;
+  font-weight: 400;
+  font-size: 2.25em !important;
+  color: rgba(0, 0, 0, 0.75);
+  display: block;
+}
+
+#post-content-label {
+  margin-bottom: 2em;
 }
 </style>

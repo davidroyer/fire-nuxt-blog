@@ -55,7 +55,8 @@ module.exports = {
     "~plugins/core-components.js",
     "~plugins/date-filter.js",
     '~/plugins/vuetify.js',
-    { src: '~/plugins/vue2-editor.js', ssr: false }
+    { src: '~/plugins/vue2-editor.js', ssr: false },
+    { src: '~/plugins/mavon-editor.js', ssr: false }
   ],
 
   /*
