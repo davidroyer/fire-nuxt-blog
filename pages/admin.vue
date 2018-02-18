@@ -2,12 +2,10 @@
   <v-layout justify-center align-center>
     <div id="dashboard">
       <v-menu
-
        :nudge-width="200"
         :close-on-content-click="true"
         v-model="showAdminMenu"
       >
-        <!-- <v-btn >Admin Menu</v-btn> -->
         <v-btn large id="admin-menu-btn" color="secondary lighten-1" dark slot="activator" icon>
           <v-icon>account_circle</v-icon>
         </v-btn>
@@ -52,9 +50,6 @@ export default {
     }
   },
   computed: {
-    loadedPosts() {
-      return this.$store.getters.loadedPosts;
-    },
     isLoggedIn() {
       return this.$store.getters.isAuthenticated;
     },

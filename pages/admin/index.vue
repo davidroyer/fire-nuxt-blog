@@ -1,7 +1,6 @@
 <template>
   <div class="admin-page">
-
-    <section class="existing-posts">
+  <section class="existing-posts">
       <h1>Existing Posts</h1>
       <PostList
         isAdmin
@@ -13,7 +12,7 @@
 <script>
 
 export default {
-  middleware: ['check-auth', 'auth'],
+  // middleware: ['check-auth', 'auth'],
   computed: {
     loadedPosts() {
       return this.$store.getters.loadedPosts;
