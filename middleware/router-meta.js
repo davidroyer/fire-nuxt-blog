@@ -1,7 +1,12 @@
 export default ({ store, route, redirect}) => {
   store.commit('setMeta', route.meta)
   const requiresAuth = route.meta.some(metaData => metaData.requiresAuth)
-  console.log('From router-meta-requiresAuth: ', requiresAuth);
-  // redirect("/admin/auth");
-  // check requiresAuth bool and your store (authentication data) and redirect accordingly
+  const isLoginRoute = route.name === 'admin-auth'
+
+  if (isLoginRoute) {
+    return;
+  }
+  if (requiresAuth && !store.getters.isAuthenticated && !isLoginRoute) {
+    redirect("/admin/auth");
+  }
 }

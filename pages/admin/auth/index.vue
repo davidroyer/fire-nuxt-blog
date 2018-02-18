@@ -1,45 +1,69 @@
 <template>
-  <div class="admin-auth-page">
-    <div class="auth-container">
-      <form @submit.prevent="onSubmit">
-        <AppControlInput type="email" v-model="email">E-Mail Address</AppControlInput>
-        <AppControlInput type="password" v-model="password">Password</AppControlInput>
-        <AppButton type="submit">{{ isLogin ? 'Login' : 'Sign Up' }}</AppButton>
-        <AppButton
-          type="button"
-          btn-style="inverted"
-          style="margin-left: 10px"
-          @click="isLogin = !isLogin">Switch to {{ isLogin ? 'Signup' : 'Login' }}</AppButton>
-      </form>
-    </div>
-  </div>
+  <v-layout align-center justify-center>
+    <v-flex xs12 sm8 md4>
+      <v-card >
+        <v-toolbar flat>
+          <v-toolbar-title>Login form</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <!-- <v-tooltip bottom>
+            <v-btn
+              icon
+              large
+              target="_blank"
+              slot="activator"
+            >
+              <v-icon large>code</v-icon>
+            </v-btn>
+            <span>Source</span>
+          </v-tooltip> -->
+        </v-toolbar>
+        <form @submit.prevent="onSubmit">
+          <v-card-text>
+            <v-text-field prepend-icon="person" name="login" v-model="email" label="Login" type="email"></v-text-field>
+            <v-text-field prepend-icon="lock" name="password" v-model="password" label="Password" id="password" type="password"></v-text-field>
+
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn type="submit" class="white--text lighten-2" color="secondary">Login</v-btn>
+            <!-- <AppButton type="submit">{{ isLogin ? 'Login' : 'Sign Up' }}</AppButton>
+            <AppButton
+              type="button"
+              btn-style="inverted"
+              style="margin-left: 10px"
+              @click="isLogin = !isLogin">Switch to {{ isLogin ? 'Signup' : 'Login' }}</AppButton> -->
+          </v-card-actions>
+        </form>
+      </v-card>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
-export default {
-  name: "AdminAuthPage",
-  layout: "admin",
-  data() {
-    return {
+  export default {
+    name: "AdminAuthPage",
+    layout: 'default',
+    data: () => ({
+      drawer: null,
       isLogin: true,
       email: "",
       password: ""
-    };
-  },
-  methods: {
-    onSubmit() {
-      this.$store.dispatch("authenticateUser", {
-        isLogin: this.isLogin,
-        email: this.email,
-        password: this.password
-      })
-      .then(() => {
-        this.$router.push('/admin');
-      });
+    }),
+    methods: {
+      onSubmit() {
+        this.$store.dispatch("authenticateUser", {
+          isLogin: this.isLogin,
+          email: this.email,
+          password: this.password
+        })
+        .then(() => {
+          this.$router.push('/admin');
+        });
+      }
     }
   }
-};
 </script>
+
 
 <style scoped>
 .admin-auth-page {

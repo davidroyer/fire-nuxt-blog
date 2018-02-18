@@ -2,7 +2,6 @@
   <v-layout justify-center align-center>
     <v-flex>
       <div class="admin-page">
-        {{$store.state.meta}}
         <section class="new-post">
           <v-btn color="secondary" nuxt @click="$router.push('/admin/new-post')">Create Post</v-btn>
           <v-btn id="logout-btn" nuxt outline @click="onLogout">Logout</v-btn>
@@ -21,12 +20,7 @@
 <script>
 
 export default {
-  // middleware: ['check-auth', 'auth', 'meta'],
-  middleware: ['check-auth', 'meta'],
-  meta: {
-    requiresAuth: true,
-    works: true
-  },
+  layout: 'admin',
   computed: {
     loadedPosts() {
       return this.$store.getters.loadedPosts;
