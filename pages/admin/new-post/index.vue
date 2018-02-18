@@ -15,7 +15,6 @@ import axios from "axios";
 import AdminPostForm from "@/components/Admin/AdminPostForm";
 
 export default {
-  layout: "admin",
   components: {
     AdminPostForm
   },

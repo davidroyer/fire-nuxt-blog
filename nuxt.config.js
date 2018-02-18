@@ -83,7 +83,7 @@ module.exports = {
     mode: "out-in"
   },
   router: {
-    middleware: 'router-meta'
+    // middleware: 'router-meta'
   },
   serverMiddleware: [bodyParser.json(), "~/api"],
   generate: {

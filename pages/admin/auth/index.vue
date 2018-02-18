@@ -41,8 +41,8 @@
 
 <script>
   export default {
-    name: "AdminAuthPage",
-    layout: 'default',
+    name: "default",
+    // layout: 'default',
     data: () => ({
       drawer: null,
       isLogin: true,

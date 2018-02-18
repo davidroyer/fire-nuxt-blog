@@ -1,26 +1,18 @@
 <template>
-  <v-layout justify-center align-center>
-    <v-flex>
-      <div class="admin-page">
-        <section class="new-post">
-          <v-btn color="secondary" nuxt @click="$router.push('/admin/new-post')">Create Post</v-btn>
-          <v-btn id="logout-btn" nuxt outline @click="onLogout">Logout</v-btn>
-        </section>
-        <section class="existing-posts">
-          <h1>Existing Posts</h1>
-          <PostList
-            isAdmin
-            :posts="loadedPosts" />
-        </section>
-      </div>
-    </v-flex>
-  </v-layout>
+  <div class="admin-page">
+
+    <section class="existing-posts">
+      <h1>Existing Posts</h1>
+      <PostList
+        isAdmin
+        :posts="loadedPosts" />
+    </section>
+  </div>
 </template>
 
 <script>
 
 export default {
-  layout: 'admin',
   computed: {
     loadedPosts() {
       return this.$store.getters.loadedPosts;
