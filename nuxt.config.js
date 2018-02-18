@@ -85,7 +85,7 @@ module.exports = {
   router: {
     // middleware: 'router-meta'
   },
-  serverMiddleware: [bodyParser.json(), "~/api"],
+  // serverMiddleware: [bodyParser.json(), "~/api"],
   generate: {
     routes: function() {
       return axios.get('https://nuxtfireapi.firebaseio.com/posts.json')
