@@ -25,6 +25,7 @@
     <v-toolbar color="indigo" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>Application</v-toolbar-title>
+      <h6 v-text="$store.state.meta"></h6>
     </v-toolbar>
     <v-content>
       <v-container fluid fill-height>

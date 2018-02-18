@@ -27,10 +27,7 @@ module.exports = {
         href: "https://fonts.googleapis.com/css?family=Open+Sans"
       },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' },
-      {
-        rel: "stylesheet",
-        href: "https://unpkg.com/vuetify/dist/vuetify.min.css"
-      }
+      { rel: "stylesheet", href: "https://unpkg.com/vuetify/dist/vuetify.min.css" }
     ]
   },
 
@@ -64,7 +61,7 @@ module.exports = {
   */
   modules: ["@nuxtjs/axios"],
   axios: {
-    baseURL: process.env.BASE_URL || "https://fire-tests.firebaseio.com",
+    baseURL: process.env.BASE_URL || "https://nuxtfireapi.firebaseio.com",
     credentials: false
   },
 
@@ -78,20 +75,20 @@ module.exports = {
     extend(config, ctx) {}
   },
   env: {
-    baseUrl: process.env.BASE_URL || "https://fire-tests.firebaseio.com",
-    fbAPIKey: "AIzaSyApB_tw8EabiOtZ193fu4VazZbM00jlPBA"
+    baseUrl: process.env.BASE_URL || "https://nuxtfireapi.firebaseio.com",
+    fbAPIKey: "AIzaSyDi-EfdKQoaQ1klE4dhv87TzHEC_3NvnsM"
   },
   transition: {
     name: "fade",
     mode: "out-in"
   },
-  // router: {
-  //   middleware: 'log'
-  // }
+  router: {
+    middleware: 'router-meta'
+  },
   serverMiddleware: [bodyParser.json(), "~/api"],
   generate: {
     routes: function() {
-      return axios.get('https://fire-tests.firebaseio.com/posts.json')
+      return axios.get('https://nuxtfireapi.firebaseio.com/posts.json')
       .then((res) => {
         return _.map(res.data, function(post, key) {
           return `/fire/${post.slug}`
@@ -101,7 +98,7 @@ module.exports = {
     }
     // routes: function() {
     //   return axios
-    //     .get('https://fire-tests.firebaseio.com/posts.json')
+    //     .get('https://nuxtfireapi.firebaseio.com/posts.json')
     //     .then(res => {
     //       const routes = [];
     //       for (const slug in res.data) {
@@ -120,7 +117,7 @@ module.exports = {
 
     // routes: function() {
     //   return axios
-    //     .get("https://fire-tests.firebaseio.com/posts.json")
+    //     .get("https://nuxtfireapi.firebaseio.com/posts.json")
     //     .then(res => {
     //       const routes = [];
     //       for (const key in res.data) {

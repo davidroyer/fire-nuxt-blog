@@ -12,7 +12,7 @@
               :style="{backgroundImage: 'url(' + post.thumbnail + ')'}"></div>
             <div class="post-content">
               <h1 v-if="post.title">{{ post.title }}</h1>
-              <p v-if="post.previewText">{{ post.previewText }}</p>
+              <p v-if="post.excerpt">{{ post.excerpt }}</p>
             </div>
           </article>
         </nuxt-link>

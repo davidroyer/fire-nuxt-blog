@@ -5,7 +5,7 @@
         class="post-thumbnail"
         :style="{backgroundImage: 'url(' + thumbnail + ')'}"></div>
       <div class="post-content">
-        <h1>{{ title }}</h1>
+        <h1 class="title">{{ title }}</h1>
         <p>{{ previewText }}</p>
       </div>
     </article>
@@ -76,6 +76,12 @@ a {
 .post-content {
   padding: 10px;
   text-align: center;
+  top: 20px;
+  position: absolute;
+}
+
+.post-content .title {
+  margin-bottom: .5em;
 }
 
 a:hover .post-content,
@@ -86,4 +92,20 @@ a:active .post-content {
 .post-preview {
   margin: 1em;
 }
+
+article {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  transition: all .25s ease;
+}
+
+.post-content {
+  background: transparent !important;
+}
+.post-preview:hover article, .post-preview:focus article {
+  background: #eee;
+}
+
 </style>

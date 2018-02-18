@@ -6,9 +6,13 @@ const createStore = () => {
     state: {
       loadedPosts: [],
       token: null,
-      sidebar: false
+      sidebar: false,
+      meta: {}
     },
     mutations: {
+      setMeta(state, meta) {
+        state.meta = meta
+      },
       toggleSidebar(state) {
         state.sidebar = !state.sidebar;
       },
@@ -51,7 +55,7 @@ const createStore = () => {
         };
         return this.$axios
           .$post(
-            "https://fire-tests.firebaseio.com/posts.json?auth=" +
+            "https://nuxtfireapi.firebaseio.com/posts.json?auth=" +
               vuexContext.state.token,
             createdPost
           )
@@ -63,7 +67,7 @@ const createStore = () => {
       editPost(vuexContext, editedPost) {
         return this.$axios
           .$put(
-            "https://fire-tests.firebaseio.com/posts/" +
+            "https://nuxtfireapi.firebaseio.com/posts/" +
               editedPost.id +
               ".json?auth=" +
               vuexContext.state.token,

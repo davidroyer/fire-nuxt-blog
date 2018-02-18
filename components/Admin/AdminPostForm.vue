@@ -2,16 +2,17 @@
 <form id="admin-post-form" @submit.prevent="onSave">
   <div class="editedPost-wrapper">
     <label id="post-settings-label">Post Settings</label>
-    <v-text-field name="title" label="Post Title" id="title" v-model="editedPost.title"></v-text-field>
-    <v-text-field name="slug" label="Post Slug" id="slug" v-model="postSlug"></v-text-field>
-    <v-text-field name="thumbnail" label="Post Thumbnail Link" id="thumbnail" v-model="editedPost.thumbnail"></v-text-field>
+    <v-text-field id="title" name="title" label="Post Title" v-model="editedPost.title"></v-text-field>
+    <v-text-field id="subtitle" name="subtitle" label="Post Subtitle" v-model="editedPost.subtitle"></v-text-field>
+    <v-text-field id="slug" name="slug" label="Post Slug" v-model="postSlug"></v-text-field>
+    <v-text-field id="thumbnail" name="thumbnail" label="Post Thumbnail Link" v-model="editedPost.thumbnail"></v-text-field>
     <v-text-field
-      name="previewText"
-      id="previewText"
-      label="Post Preview Text"
+      name="excerpt"
+      id="excerpt"
+      label="Post Excerpt"
       multi-line
       :rows="2"
-      v-model="editedPost.previewText">
+      v-model="editedPost.excerpt">
     </v-text-field>
 
     <v-select
@@ -46,7 +47,7 @@
   <div class="editedPost-preview post-content-editor">
     <label id="post-content-label" class="display-1 label-styles">Post Content</label>
     <no-ssr>
-      <mavon-editor v-on:change="handleChange" v-on:save="handleEditorSave" v-model="editedPost.markdown"></mavon-editor>
+      <mavon-editor placeholder="Start Editing..." v-on:change="handleChange" v-on:save="handleEditorSave" v-model="editedPost.markdown"></mavon-editor>
     </no-ssr>
   </div>
 </form>
@@ -76,13 +77,14 @@ export default {
       editedPost: this.post
         ? { ...this.post }
         : {
-            title: "",
-            slug: "",
-            thumbnail: "",
+            title: '',
+            subtitle: '',
+            slug: '',
+            thumbnail: '',
             tags: [],
-            previewText: "",
-            content: "",
-            markdown: ""
+            excerpt: '',
+            content: '',
+            markdown: ''
 
           },
           editorMarkdown: '# Starting'

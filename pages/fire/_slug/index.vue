@@ -15,9 +15,9 @@
             </div>
           </div>
 
-          <div class="post-image">
+          <!-- <div class="post-image">
             <img v-if="post.thumbnail" :src="post.thumbnail" :alt="'Post thumbnail for ' + post.title">
-          </div>
+          </div> -->
 
           <div class="post-content" v-html="post.content"></div>
         </section>
@@ -119,7 +119,7 @@ export default {
     justify-content: center;
     margin-top: 1em;
     font-weight: bold;
-    font-size: .85em;    
+    font-size: .85em;
 }
 .tag {
     margin: 0 .75em;
