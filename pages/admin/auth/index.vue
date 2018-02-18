@@ -3,7 +3,7 @@
     <v-flex xs12 sm8 md4>
       <v-card >
         <v-toolbar flat>
-          <v-toolbar-title>Login form</v-toolbar-title>
+          <v-toolbar-title>Admin Login</v-toolbar-title>
           <v-spacer></v-spacer>
           <!-- <v-tooltip bottom>
             <v-btn

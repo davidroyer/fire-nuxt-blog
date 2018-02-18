@@ -99,9 +99,6 @@ export default {
     right: 0;
   }
   #dashboard {
-    /* position: absolute;
-    right: 25px;
-    top: 15px; */
     font-size: .8em;
     font-weight: 500;
     /* padding: 1em 3.5em 1.5em 1.25em; */
