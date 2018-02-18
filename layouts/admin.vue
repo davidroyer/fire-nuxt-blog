@@ -48,11 +48,11 @@
         { icon: 'bookmark', title: 'Fire Posts', to: '/fire' }
       ]
     }),
-    middleware: ['check-auth', 'auth', 'meta'],
-    meta: {
-      requiresAuth: true,
-      works: true
-    },
+    
+    // meta: {
+    //   requiresAuth: true,
+    //   works: true
+    // },
     props: {
       source: String
     }
