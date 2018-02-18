@@ -96,38 +96,5 @@ module.exports = {
 
       })
     }
-    // routes: function() {
-    //   return axios
-    //     .get('https://nuxtfireapi.firebaseio.com/posts.json')
-    //     .then(res => {
-    //       const routes = [];
-    //       for (const slug in res.data) {
-    //         routes.push({
-    //           route: "/posts/" + slug,
-    //           payload: {postData: res.data[slug]}
-    //         });
-    //       }
-    //       return routes;
-    //     });
-    //   }
-    //     // return _.map(res.data, function(post, key) {
-    //     //   return `/fire/${post.slug}`
-    //     // })
-    //
-
-    // routes: function() {
-    //   return axios
-    //     .get("https://nuxtfireapi.firebaseio.com/posts.json")
-    //     .then(res => {
-    //       const routes = [];
-    //       for (const key in res.data) {
-    //         routes.push({
-    //           route: "/posts/" + key,
-    //           payload: {postData: res.data[key]}
-    //         });
-    //       }
-    //       return routes;
-    //     });
-    // }
   }
 };
