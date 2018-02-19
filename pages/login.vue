@@ -40,6 +40,7 @@
           password: this.password
         })
         .then(() => {
+          console.log('inside then of promise');
           this.$router.push('/admin');
         });
       }
